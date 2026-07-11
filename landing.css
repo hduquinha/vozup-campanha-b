@@ -88,10 +88,11 @@ body.landing{
 .lp-video__frame{
   position:relative;
   width:100%;
-  max-width:720px;
+  max-width:380px;
+  max-height:78vh;
   margin:0 auto;
-  aspect-ratio:16/9;
-  border-radius:16px;
+  aspect-ratio:9/16;
+  border-radius:20px;
   overflow:hidden;
   border:1px solid var(--line);
   background:#0a0f10;
