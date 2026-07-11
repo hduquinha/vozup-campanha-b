@@ -110,7 +110,13 @@ body.landing{
 .lp-video__frame:before{
   content:"";position:absolute;inset:0;
   background:linear-gradient(to top,rgba(0,0,0,.75),transparent 55%);
+  pointer-events:none;
 }
+.lp-video__frame.video--playing:before,
+.lp-video__frame.video--playing .lp-video__poster{
+  display:none;
+}
+.lp-video__frame.video--playing{cursor:default}
 .video-play-btn{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:68px;height:68px;border-radius:50%;

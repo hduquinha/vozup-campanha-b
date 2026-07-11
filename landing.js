@@ -17,6 +17,7 @@
       container.innerHTML = ytMatch
         ? `<iframe src="https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0" title="Vídeo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>`
         : `<video src="${videoUrl}" controls autoplay playsinline></video>`;
+      container.classList.add('video--playing');
     }
 
     container.addEventListener('click', load, { once: true });
