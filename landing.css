@@ -43,6 +43,7 @@ body.landing{
   display:flex;align-items:center;justify-content:center;gap:12px;
   padding:20px 20px 16px;
 }
+.lp-header--compact{padding:16px 20px 6px}
 .lp-header__name{
   font-size:1.1rem;font-weight:900;letter-spacing:1px;color:#fff;
 }
@@ -134,14 +135,14 @@ body.landing{
 
 /* ── Vídeo (primeira dobra) ─────────────────────── */
 .lp-video-hero{
-  padding:28px 20px 20px;
+  padding:4px 20px 28px;
   text-align:center;
-  background:radial-gradient(640px 420px at 50% -120px, rgba(1,142,149,.4), transparent 65%);
+  background:radial-gradient(560px 360px at 50% -40px, rgba(1,142,149,.4), transparent 65%);
 }
 .lp-video-hero__title{
-  margin:22px auto 0;
+  margin:0 auto 18px;
   max-width:480px;
-  font-size:clamp(1.7rem,6.5vw,2.4rem);
+  font-size:clamp(1.5rem,6vw,2.1rem);
   font-weight:900;
   line-height:1.15;
   letter-spacing:-.3px;
