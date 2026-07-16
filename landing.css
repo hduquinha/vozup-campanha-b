@@ -43,7 +43,7 @@ body.landing{
   display:flex;align-items:center;justify-content:center;gap:12px;
   padding:20px 20px 16px;
 }
-.lp-header--compact{padding:16px 20px 6px}
+.lp-header--compact{padding:14px 20px 4px}
 .lp-header__name{
   font-size:1.1rem;font-weight:900;letter-spacing:1px;color:#fff;
 }
@@ -140,15 +140,24 @@ body.landing{
   background:radial-gradient(560px 360px at 50% -40px, rgba(1,142,149,.4), transparent 65%);
 }
 .lp-video-hero__title{
-  margin:0 auto 18px;
+  margin:0 auto 6px;
   max-width:480px;
-  font-size:clamp(1.5rem,6vw,2.1rem);
+  font-size:clamp(1.4rem,5.6vw,2.1rem);
   font-weight:900;
-  line-height:1.15;
+  line-height:1.12;
   letter-spacing:-.3px;
   color:#fff;
   text-wrap:balance;
 }
+.lp-video-hero__subtitle{
+  margin:0 auto 12px;
+  max-width:420px;
+  color:#8aaeaf;
+  font-size:.8rem;
+  font-weight:600;
+  line-height:1.4;
+}
+.lp-video-hero .lp-video__frame{max-height:64vh}
 
 /* ── Vídeo ───────────────────────────────────────── */
 .lp-video{padding:0 20px 40px}
