@@ -127,7 +127,8 @@ body.landing{
   line-height:1.5;
 }
 .lp-hero__gift{
-  display:inline-block;
+  display:block;
+  width:fit-content;
   margin:16px auto 0;
   color:var(--gold-light);
   font-size:.86rem;
