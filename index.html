@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Microsoft Clarity (mapa de calor/gravacoes) — ver clarity.js na raiz -->
+  <script defer src="/clarity.js"></script>
   <title>Aula Experimental VOZUP · 30 de Junho</title>
   <meta name="description" content="Garanta sua vaga na aula experimental exclusiva da VOZUP Escola de Oratória. Terça-feira, 30 de Junho · 18h59 às 21h09. Vagas limitadas!" />
 
@@ -171,6 +173,67 @@
       text-transform:uppercase;
       letter-spacing:1px;
       text-shadow:0 1px 6px rgba(0,0,0,.9);
+    }
+
+    /* Hero copy: tagline + benefit (3-second pitch) */
+    .hero-copy{
+      text-align:center;
+      max-width:320px;
+    }
+    .hero-tagline{
+      font-size:.76rem;
+      font-style:italic;
+      font-weight:600;
+      color:var(--primary-light);
+      line-height:1.4;
+      margin-bottom:8px;
+      text-shadow:0 1px 6px rgba(0,0,0,.9);
+    }
+    .hero-benefit{
+      font-size:.92rem;
+      font-weight:700;
+      color:#fff;
+      line-height:1.4;
+      text-shadow:0 2px 10px rgba(0,0,0,.85);
+    }
+
+    /* Gift badge */
+    .gift-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 14px;
+      border:1px solid rgba(106,193,193,.32);
+      border-radius:999px;
+      background:rgba(1,142,149,.16);
+      color:#fff;
+      font-size:.68rem;
+      font-weight:800;
+      text-align:center;
+    }
+
+    /* Quick benefits (3 checkmarks) */
+    .quick-benefits{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:7px 14px;
+      list-style:none;
+    }
+    .quick-benefits li{
+      display:flex;
+      align-items:center;
+      gap:5px;
+      font-size:.72rem;
+      font-weight:800;
+      color:#fff;
+      text-shadow:0 1px 6px rgba(0,0,0,.9);
+      white-space:nowrap;
+    }
+    .quick-benefits li:before{
+      content:"✓";
+      color:var(--primary-light);
+      font-weight:900;
     }
 
     /* Divider */
@@ -489,6 +552,19 @@
       <h1>VOZUP</h1>
       <span>Escola de Oratória e Inteligência Emocional</span>
     </div>
+
+    <div class="hero-copy">
+      <p class="hero-tagline">&ldquo;Não adianta pedir uma luz, mas não dar um passo pra sair da escuridão.&rdquo;</p>
+      <p class="hero-benefit">Aprenda técnicas práticas para falar com segurança em apresentações, reuniões, entrevistas e vídeos.</p>
+    </div>
+
+    <div class="gift-badge">🎁 Cadastre-se e ganhe uma aula experimental gratuita.</div>
+
+    <ul class="quick-benefits">
+      <li>Fale sem travar</li>
+      <li>Tenha mais confiança</li>
+      <li>Aprenda técnicas na prática</li>
+    </ul>
 
     <div class="divider" aria-hidden="true"></div>
 
