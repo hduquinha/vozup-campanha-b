@@ -32,11 +32,22 @@
     const successBlock = document.getElementById('successBlock');
     const origem = form.dataset.origem || 'landing';
     const nomeEvento = form.dataset.nomeEvento || 'Captação VozUP';
+    const apiEndpoint = window.FORM_CONFIG?.SERVER_URL || '/api/inscricao';
+
+    function normalizeBrazilianPhone(value){
+      let digits = String(value || '').replace(/\D+/g, '');
+      // Alguns preenchimentos automáticos do iPhone incluem o país (55) ou
+      // o prefixo internacional (0055). Removemos só quando há dígitos além
+      // de um telefone brasileiro completo — DDD 55 continua sendo válido.
+      if(digits.startsWith('0055')) digits = digits.slice(4);
+      else if(digits.startsWith('55') && digits.length >= 12) digits = digits.slice(2);
+      return digits.slice(0, 11);
+    }
 
     const telefoneInput = document.getElementById('telefone');
     if(telefoneInput){
       telefoneInput.addEventListener('input', function(){
-        const d = this.value.replace(/\D+/g,'').slice(0,11);
+        const d = normalizeBrazilianPhone(this.value);
         if(d.length > 10)      this.value = `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
         else if(d.length > 6)  this.value = `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6)}`;
         else if(d.length > 2)  this.value = `(${d.slice(0,2)}) ${d.slice(2)}`;
@@ -59,13 +70,9 @@
       if(!nome){ setError('nome','Campo obrigatório.'); ok=false; }
       else if(nome.split(/\s+/).filter(Boolean).length < 2){ setError('nome','Informe seu nome completo.'); ok=false; }
 
-      const digits = form.telefone.value.replace(/\D+/g,'');
+      const digits = normalizeBrazilianPhone(form.telefone.value);
       if(!digits){ setError('telefone','Campo obrigatório.'); ok=false; }
       else if(digits.length < 10 || digits.length > 11){ setError('telefone','Informe um número válido com DDD.'); ok=false; }
-
-      const email = form.email.value.trim();
-      if(!email){ setError('email','Campo obrigatório.'); ok=false; }
-      else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ setError('email','Informe um e-mail válido.'); ok=false; }
       return ok;
     }
 
@@ -94,8 +101,7 @@
 
       const payload = {
         nome: toTitleCase(form.nome.value),
-        telefone: form.telefone.value.replace(/\D+/g,''),
-        email: form.email.value.trim().toLowerCase(),
+        telefone: normalizeBrazilianPhone(form.telefone.value),
         nome_evento: nomeEvento,
         escola: 'VOZUP - Escola de Oratória e Inteligência Emocional',
         origem,
@@ -106,7 +112,7 @@
       };
 
       try{
-        const res = await fetch('/api/inscricao', {
+        const res = await fetch(apiEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
