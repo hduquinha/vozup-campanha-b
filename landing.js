@@ -27,6 +27,7 @@
     const form = document.getElementById('regForm');
     if(!form) return;
 
+    const WHATSAPP_NUMBER = '551120901412';
     const submitBtn = document.getElementById('submitBtn');
     const statusMsg = document.getElementById('statusMsg');
     const successBlock = document.getElementById('successBlock');
@@ -82,6 +83,23 @@
         .map((w,i)=>(i>0&&lc.has(w))?w:w[0].toUpperCase()+w.slice(1)).join(' ');
     }
 
+    function showWhatsAppCta(name){
+      if(!successBlock) return;
+      let link = successBlock.querySelector('.whatsapp-success-link');
+      if(!link){
+        link = document.createElement('a');
+        link.className = 'whatsapp-success-link';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'Chamar no WhatsApp';
+        successBlock.appendChild(link);
+      }
+      const message = name
+        ? `Olá! Meu nome é ${name}. Acabei de concluir meu cadastro e gostaria de falar com a equipe.`
+        : 'Olá! Acabei de concluir meu cadastro e gostaria de falar com a equipe.';
+      link.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    }
+
     function getClientId(){
       const k = `vozup:clientId:${origem}`;
       let id = sessionStorage.getItem(k);
@@ -121,6 +139,7 @@
         form.closest('.form-wrap').querySelector('.form-header').hidden = true;
         form.hidden = true;
         successBlock.classList.add('visible');
+        showWhatsAppCta(payload.nome);
         sessionStorage.removeItem(`vozup:clientId:${origem}`);
       } catch(err){
         console.warn(err);
